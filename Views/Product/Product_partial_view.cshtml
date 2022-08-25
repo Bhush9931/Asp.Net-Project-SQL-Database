@@ -1,0 +1,33 @@
+﻿@model Crud_Opration_product.Models.Product_Model
+
+<body class="bg-primary">
+    @using (Html.BeginForm("SaveOrupdate", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+     {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="row">
+        <div class="col-md-3">
+            <div class="form-group ">
+                <label class="small mb-1 ">Product Name <small style="color:red">*</small></label>
+                @Html.HiddenFor(m => m.Product_id)
+                @Html.TextBoxFor(m => m.product_Name, new { @class = "form-control ", autofocus = "autofocus", tabindex = "2" })
+                @Html.ValidationMessageFor(m => m.product_Name, "", new { @class = "text-danger  " })
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <div class="form-group ">
+                <label class="small mb-1 ">Category Id <small style="color:red">*</small></label>
+                @Html.TextBoxFor(m => m.categeory_id, new { @class = "form-control ", autofocus = "autofocus", tabindex = "2" })
+                @Html.ValidationMessageFor(m => m.categeory_id, "", new { @class = "text-danger  " })
+            </div>
+
+        </div>
+        <div class="form-group mt-4 mb-0 form-actions">
+            <button type="submit" class="btn btn-dark" id="btnsubmit"> Save Record </button>
+        </div>
+    </div>
+
+     }
+</body>

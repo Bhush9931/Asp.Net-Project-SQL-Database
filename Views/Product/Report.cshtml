@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Crud_Opration_product.Data_Context.Sp_Crud_Result>
+@{ 
+    Layout = null;
+}
+<table class="table">
+    <tr>
+        <th>
+            Product id
+        </th>
+        <th>
+            product_Name
+        </th>
+        <th>
+            categeory id
+        </th>
+        <th>
+            categeory Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Product_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.product_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categeory_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categeory_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
