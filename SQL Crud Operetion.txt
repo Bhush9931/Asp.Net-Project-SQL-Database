@@ -1,0 +1,63 @@
+USE [Product Crud Operation]
+GO
+
+/****** Object:  Table [dbo].[M_Product]    Script Date: 24-08-2022 23:12:43 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[M_Product](
+	[Product_id] [int] IDENTITY(1,1) NOT NULL,
+	[product_Name] [nvarchar](50) NULL,
+	[categeory_id] [int] NULL,
+ CONSTRAINT [PK_M_Product] PRIMARY KEY CLUSTERED 
+(
+	[Product_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+--secound table--
+
+USE [Product Crud Operation]
+GO
+
+/****** Object:  Table [dbo].[M_Categeory]    Script Date: 24-08-2022 23:11:19 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[M_Categeory](
+	[categeory_id] [int] IDENTITY(1,1) NOT NULL,
+	[categeory_Name] [nvarchar](50) NULL,
+ CONSTRAINT [PK_M_Categeory] PRIMARY KEY CLUSTERED 
+(
+	[categeory_id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+
+----Store Procedure---
+USE [Product Crud Operation]
+GO
+/****** Object:  StoredProcedure [dbo].[Sp_Crud]    Script Date: 24-08-2022 23:03:38 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create proc [dbo].[Sp_Crud]
+as
+begin
+select p.Product_id,p.product_Name,p.categeory_id,C.categeory_Name
+from [dbo].[M_Product] P 
+inner join [dbo].[M_Categeory] C on
+p.categeory_id=C.categeory_id
+
+end
+
